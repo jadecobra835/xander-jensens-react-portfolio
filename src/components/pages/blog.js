@@ -13,6 +13,13 @@ class Blog extends Component {
         };
 
         this.getBlogItems = this.getBlogItems.bind(this);
+        this.activateInfiniteScroll();
+    };
+
+    activateInfiniteScroll() {
+        window.onscroll = () => {
+            console.log("onscroll");
+        };
     };
 
     getBlogItems() {
@@ -38,10 +45,12 @@ class Blog extends Component {
         })
 
         return (
-            <div>
-                {blogRecords}
+            <div className="blog-container">
+                <div className="content-container">
+                    {blogRecords}
+                </div>
             </div>
-        );
+        )
     };
 };
 
