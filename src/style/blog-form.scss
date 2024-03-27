@@ -12,5 +12,7 @@
         @include base-grid();
         grid-template-columns: 200px;
         justify-content: center;
+
+        @include editing-image-styles();
     }
 }

@@ -38,6 +38,7 @@ export default class PortfolioForm extends Component {
         this.logoRef = React.createRef();
     };
 
+    // This might be good to refactor. Refactor anything that you are using more than once. (This gets used in the blog-form)
     deleteImage(imageType) {
         axios.delete(
             `https://api.devcamp.space/portfolio/delete-portfolio-image/${this.state.id}?image_type=${imageType}`, 
@@ -243,7 +244,7 @@ export default class PortfolioForm extends Component {
 
                 <div className="image-uploaders">            
                     { this.state.thumb_image_url && this.state.editMode ? 
-                        <div className="portfolio-manager-image-wrapper">
+                        <div className="image-wrapper">
                             <img src={this.state.thumb_image_url} />
 
                             <div className="image-removal-link">
@@ -266,7 +267,7 @@ export default class PortfolioForm extends Component {
 
 
                     { this.state.banner_image_url && this.state.editMode ? 
-                        <div className="portfolio-manager-image-wrapper">
+                        <div className="image-wrapper">
                             <img src={this.state.banner_image_url} />
 
                             <div className="image-removal-link">
@@ -289,7 +290,7 @@ export default class PortfolioForm extends Component {
 
 
                     { this.state.logo_url && this.state.editMode ? 
-                        <div className="portfolio-manager-image-wrapper">
+                        <div className="image-wrapper">
                             <img src={this.state.logo_url} />
 
                             <div className="image-removal-link">
