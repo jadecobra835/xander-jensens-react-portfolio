@@ -9,11 +9,20 @@ export default class BlogForm extends Component {
 
         this.state = {
             title: "",
-            blog_status: ""
+            blog_status: "",
+            content: ""
         };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleRichTextEditorChange = this.handleRichTextEditorChange.bind(this);
+    };
+
+    handleRichTextEditorChange(content) {
+        // Modern Javascript allows you to set "state.content" to "argument.content",
+        // (Both are just called content noramlly) and because they share the same name,
+        // you can just say the following.
+        this.setState({ content });
     };
 
     buildForm() {
@@ -21,6 +30,7 @@ export default class BlogForm extends Component {
 
         formData.append("portfolio_blog[title]", this.state.title);
         formData.append("portfolio_blog[blog_status]", this.state.blog_status);
+        formData.append("portfolio_blog[content]", this.state.content);
 
         return formData;
     };
@@ -31,12 +41,13 @@ export default class BlogForm extends Component {
             this.buildForm(), 
             { withCredentials: true }
         ).then(response => {
-            this.props.handleSuccessfullFormSubmission(response.data.portfolio_blog);
-
             this.setState({
                 title: "",
-                blog_status: ""
+                blog_status: "",
+                content: ""
             });
+
+            this.props.handleSuccessfullFormSubmission(response.data.portfolio_blog);
         }).catch(error => {
             console.log("handleSubmit error", error)
         })
@@ -72,7 +83,7 @@ export default class BlogForm extends Component {
                 </div>
 
                 <div className="one-column">
-                    <RichTextEditor />
+                    <RichTextEditor handleRichTextEditorChange={this.handleRichTextEditorChange} />
                 </div>
 
                 <button className="btn">Save</button>
