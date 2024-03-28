@@ -1,5 +1,5 @@
 import React from 'react';
-import loginImg from '../../../static/assets/images/auth/login.jpg';
+import aboutMeImage from '../../../static/assets/images/auth/login.jpg';
 
 export default function() {
     return (
@@ -7,7 +7,7 @@ export default function() {
             <div 
                 className="left-column"
                 style={{
-                    background: "url(" + loginImg + ") no-repeat",
+                    background: "url(" + aboutMeImage + ") no-repeat",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                 }}> 
