@@ -1,6 +1,9 @@
 {
   "name": "xander-jensens-react-portfolio",
   "version": "1.0.0",
+  "engines": {
+    "node": "16.x"
+  },
   "description": "Personal portfolio app build in React",
   "scripts": {
     "preinstall": "npm set audit false",
